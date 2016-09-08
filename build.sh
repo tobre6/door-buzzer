@@ -66,6 +66,11 @@ export UPLOAD_PORT=/dev/cu.usbserial-A92HD3JZ
 export LIBS="$ESP_ROOT/libraries/ESP8266WiFi/ ../pubsubclient/src/"
 
 cp ../../*.ino .
-make -f makeEspArduino.mk upload
 
-screen $UPLOAD_PORT 115200
+if [ $(uname) == 'Darwin' ]
+then
+    make -f makeEspArduino.mk upload
+    screen $UPLOAD_PORT 115200
+else
+    make -f makeEspArduino.mk all
+fi
