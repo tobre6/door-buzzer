@@ -74,3 +74,5 @@ then
 else
     make -f makeEspArduino.mk all
 fi
+
+ls -alh /tmp/mkESP/Door-Buzzer_generic/
