@@ -11,7 +11,7 @@
 
 #define RELAY 4
 #define BUZZER_ON_TIME 20 // In seconds
-#define CONNECTION_CHECK_INTERVAL 30 // In seconds
+#define CONNECTION_CHECK_INTERVAL 10 // In seconds
 
 extern "C" { 
   #include "user_interface.h" 
@@ -105,7 +105,7 @@ void checkConnection() {
   if (WiFi.status() != WL_CONNECTED)  {
     connectToWifi();
   }
-  if (!mqttClient.connected()) {
+  if (WiFi.status() == WL_CONNECTED && !mqttClient.connected()) {
     connectToMqtt();
   }
 
