@@ -1,11 +1,11 @@
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 
-#define WIFI_SSID "ssid"
-#define WIFI_PASS "password"
+#define WIFI_SSID "xxxx"
+#define WIFI_PASS "xxxx"
 
 #define MQTT_CLIENT "Door-Buzzer"
-#define MQTT_SERVER "192.168.1.72"
+#define MQTT_SERVER "192.168.1.157"
 #define MQTT_PORT   1883
 #define MQTT_TOPIC  "home/doorbuzzer"
 
@@ -26,6 +26,7 @@ bool connectToWifi();
 void connectToMqtt();
 void mqttCallback(const MQTT::Publish&);
 void turnOffBuzzer();
+void turnOnBuzzer();
 void checkConnection();
 
 void setup() {
@@ -89,16 +90,25 @@ void mqttCallback(const MQTT::Publish& pub) {
   Serial.println(pub.payload_string());
 
   if (pub.payload_string() == "on") {
-    Serial.println("Turning buzzer on");
-    digitalWrite(RELAY, HIGH);
-    timeBuzzerTurnedOn = millis();
+    turnOnBuzzer();
   }
+  if (pub.payload_string() == "off") {
+    turnOffBuzzer();
+  }
+
+  mqttClient.publish(MQTT::Publish(MQTT_TOPIC"/status", pub.payload_string()).set_retain(0).set_qos(1));
 }
 
 void turnOffBuzzer() {
   Serial.println("Turning buzzer off");
   digitalWrite(RELAY, LOW);
   timeBuzzerTurnedOn = 0;
+}
+
+void turnOnBuzzer() {
+  Serial.println("Turning buzzer on");
+    digitalWrite(RELAY, HIGH);
+    timeBuzzerTurnedOn = millis();
 }
 
 void checkConnection() {
