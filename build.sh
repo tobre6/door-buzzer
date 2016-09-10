@@ -57,6 +57,7 @@ export SINGLE_THREAD=1
 if [ ! -e "pubsubclient" ]
 then
 git clone https://github.com/Imroy/pubsubclient
+cp pubsubclient/src/* makeEspArduino/
 fi
 
 cd makeEspArduino
