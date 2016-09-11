@@ -5,9 +5,9 @@
 #include "Webserver.h"
 #include "Settings.h"
 
-#define MQTT_CLIENT "Door-Buzzer2"
+#define MQTT_CLIENT "Door-Buzzer"
 #define MQTT_PORT   1883
-#define MQTT_TOPIC  "home/doorbuzzer2"
+#define MQTT_TOPIC  "home/doorbuzzer"
 
 #define RELAY 4
 #define BUZZER_ON_TIME 20 // In seconds
