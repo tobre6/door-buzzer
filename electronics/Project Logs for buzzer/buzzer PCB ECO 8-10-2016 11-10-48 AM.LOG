@@ -1,0 +1,12 @@
+Added Component: Designator=*1(TACTILE SWITCH)
+Added Component: Designator=*2(TACTILE SWITCH)
+Added Pin To Net: NetName=GND Pin=*1-1
+Added Pin To Net: NetName=GND Pin=*1-1
+Added Pin To Net: NetName=Net*1_2 Pin=*1-2
+Added Pin To Net: NetName=Net*1_2 Pin=*1-2
+Added Pin To Net: NetName=GPIO0 Pin=*2-1
+Added Pin To Net: NetName=GPIO0 Pin=*2-1
+Added Pin To Net: NetName=GND Pin=*2-2
+Added Pin To Net: NetName=GND Pin=*2-2
+Added Member To Class: ClassName=buzzer Member=Component *1 Push button
+Added Member To Class: ClassName=buzzer Member=Component *2 Push button

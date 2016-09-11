@@ -1,0 +1,6 @@
+Remove Pin=*3-3 From Net=BUZZER_GND
+Remove Pin=*3-5 From Net=BUZZER_SIGNAL
+Remove Pin=*3-8 From Net=RELAY
+Remove Pin=IC*1-19 From Net=RELAY_SIGNAL
+Remove Pin=IC*1-21 From Net=TX
+Remove Pin=IC*1-22 From Net=RX

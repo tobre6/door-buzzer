@@ -1,0 +1,6 @@
+Added Component: Designator=*3(RELAY IMC03GR SMD)
+Added Pin To Net: NetName=RELAY Pin=*3-1
+Added Pin To Net: NetName=BUZZER_GND Pin=*3-3
+Added Pin To Net: NetName=BUZZER_SIGNAL Pin=*3-5
+Added Pin To Net: NetName=5V Pin=*3-8
+Added Member To Class: ClassName=buzzer Member=Component *3 Relay

@@ -1,0 +1,11 @@
+Output: Simple BOM
+Type  : SimpleBOM
+From  : Variant [[No Variations]] of Project [buzzer.PrjPcb]
+   Generated File[buzzer.BOM]
+   Generated File[buzzer.CSV]
+
+
+Files Generated   : 2
+Documents Printed : 0
+
+Finished Output Generation At 22:36:29 On 8.09.2016

@@ -1,0 +1,24 @@
+Added Component: Designator=IC*1(ESP8266 ESP-12-E)
+Added Pin To Net: NetName=Net*1_2 Pin=IC*1-1
+Added Pin To Net: NetName=Net*1_2 Pin=IC*1-1
+Added Pin To Net: NetName=Net*1_2 Pin=IC*1-1
+Added Pin To Net: NetName=Net*1_2 Pin=IC*1-1
+Added Pin To Net: NetName=Net*1_2 Pin=IC*1-1
+Added Pin To Net: NetName=Net*1_2 Pin=IC*1-1
+Added Pin To Net: NetName=Net*1_2 Pin=IC*1-1
+Added Pin To Net: NetName=Net*1_2 Pin=IC*1-1
+Added Pin To Net: NetName=Net*1_2 Pin=IC*1-1
+Added Pin To Net: NetName=Net*1_2 Pin=IC*1-1
+Added Pin To Net: NetName=Net*1_2 Pin=IC*1-1
+Added Pin To Net: NetName=Net*1_2 Pin=IC*1-1
+Added Pin To Net: NetName=Net*1_2 Pin=IC*1-1
+Added Pin To Net: NetName=Net*1_2 Pin=IC*1-1
+Added Pin To Net: NetName=Net*1_2 Pin=IC*1-1
+Added Pin To Net: NetName=Net*1_2 Pin=IC*1-1
+Added Pin To Net: NetName=Net*1_2 Pin=IC*1-1
+Added Pin To Net: NetName=Net*1_2 Pin=IC*1-1
+Added Pin To Net: NetName=Net*1_2 Pin=IC*1-1
+Added Pin To Net: NetName=Net*1_2 Pin=IC*1-1
+Added Pin To Net: NetName=Net*1_2 Pin=IC*1-1
+Added Pin To Net: NetName=Net*1_2 Pin=IC*1-1
+Added Member To Class: ClassName=buzzer Member=Component IC*1 ESP8266 ESP-12-E

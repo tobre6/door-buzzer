@@ -1,0 +1,74 @@
+Added Component: Designator=C1(CAP-0603-GEN)
+Added Component: Designator=C2(CAP-0603-GEN)
+Added Component: Designator=C3(CAP-0603-GEN)
+Added Component: Designator=C4(CAP-0603-GEN)
+Added Component: Designator=C5(CAP-0603-GEN)
+Added Component: Designator=J1(Screw terminal 1x6 5mm)
+Added Component: Designator=J2(Screw terminal 5mm)
+Added Component: Designator=Q1(SOT23-3)
+Added Component: Designator=R1(RESISTOR 0603)
+Added Component: Designator=R2(RESISTOR 0603)
+Added Component: Designator=R3(RESISTOR 0603)
+Added Component: Designator=R4(RESISTOR 0603)
+Added Component: Designator=R5(RESISTOR 0603)
+Added Component: Designator=R6(RESISTOR 0603)
+Added Component: Designator=U1(SOT23-5)
+Added Component: Designator=USB1(USB MICRO-B)
+Added Pin To Net: NetName=3V3 Pin=C3-2
+Added Pin To Net: NetName=3V3 Pin=C5-2
+Added Pin To Net: NetName=3V3 Pin=J1-3
+Added Pin To Net: NetName=3V3 Pin=R1-2
+Added Pin To Net: NetName=3V3 Pin=R2-1
+Added Pin To Net: NetName=3V3 Pin=R3-2
+Added Pin To Net: NetName=3V3 Pin=R4-2
+Added Pin To Net: NetName=3V3 Pin=U1-5
+Added Net: Name=3V3
+Added Pin To Net: NetName=5V Pin=C1-2
+Added Pin To Net: NetName=5V Pin=Q1-3
+Added Pin To Net: NetName=5V Pin=U1-1
+Added Pin To Net: NetName=5V Pin=U1-3
+Added Pin To Net: NetName=5V Pin=USB1-1
+Added Net: Name=5V
+Added Pin To Net: NetName=BUZZER_GND Pin=J2-1
+Added Net: Name=BUZZER_GND
+Added Pin To Net: NetName=BUZZER_SIGNAL Pin=J2-2
+Added Net: Name=BUZZER_SIGNAL
+Added Pin To Net: NetName=DTR Pin=C2-2
+Added Pin To Net: NetName=DTR Pin=J1-6
+Added Net: Name=DTR
+Added Pin To Net: NetName=GND Pin=C1-1
+Added Pin To Net: NetName=GND Pin=C3-1
+Added Pin To Net: NetName=GND Pin=C4-1
+Added Pin To Net: NetName=GND Pin=C5-1
+Added Pin To Net: NetName=GND Pin=J1-1
+Added Pin To Net: NetName=GND Pin=J1-2
+Added Pin To Net: NetName=GND Pin=R5-2
+Added Pin To Net: NetName=GND Pin=U1-2
+Added Pin To Net: NetName=GND Pin=USB1-5
+Added Net: Name=GND
+Added Pin To Net: NetName=GPIO0 Pin=R3-1
+Added Net: Name=GPIO0
+Added Pin To Net: NetName=Net*1_2 Pin=C2-1
+Added Pin To Net: NetName=Net*1_2 Pin=R1-1
+Added Net: Name=Net*1_2
+Added Pin To Net: NetName=NetC4_2 Pin=C4-2
+Added Pin To Net: NetName=NetC4_2 Pin=U1-4
+Added Net: Name=NetC4_2
+Added Pin To Net: NetName=NetIC*1_3 Pin=R2-2
+Added Net: Name=NetIC*1_3
+Added Pin To Net: NetName=NetIC*1_16 Pin=R5-1
+Added Net: Name=NetIC*1_16
+Added Pin To Net: NetName=NetIC*1_17 Pin=R4-1
+Added Net: Name=NetIC*1_17
+Added Pin To Net: NetName=NetQ1_1 Pin=Q1-1
+Added Pin To Net: NetName=NetQ1_1 Pin=R6-2
+Added Net: Name=NetQ1_1
+Added Pin To Net: NetName=RELAY_SIGNAL Pin=R6-1
+Added Net: Name=RELAY_SIGNAL
+Added Pin To Net: NetName=RELAY Pin=Q1-2
+Added Net: Name=RELAY
+Added Pin To Net: NetName=RX Pin=J1-5
+Added Net: Name=RX
+Added Pin To Net: NetName=TX Pin=J1-4
+Added Net: Name=TX
+Added Class: Name=buzzer
