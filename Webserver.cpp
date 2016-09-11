@@ -1,4 +1,5 @@
 #include <ESP8266WebServer.h>
+#include <ESP8266httpUpdate.h>
 
 #include "Webserver.h"
 
@@ -11,8 +12,14 @@ Webserver::Webserver() {
   server->on("/", [&](){
 
     String html = "<h1>Door Buzzer</h1>" + String("<p>Built: ") + String(compile_date) + "</p>";
+    html += "<p><a href=\"/ota\">Upgrade</a></p>";
     
     this->server->send(200, "text/html", html);
+  });
+
+  server->on("/ota", [&](){
+    Serial.println("Commence OTA");
+    ESPhttpUpdate.update("ota.clockwise.ee", 80, "/Door-Buzzer.bin");
   });
 
   server->begin();

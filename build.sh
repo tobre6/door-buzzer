@@ -80,7 +80,7 @@ cd makeEspArduino
 
 export SKETCH=Door-Buzzer.ino
 export UPLOAD_PORT=/dev/cu.usbserial-A92HD3JZ
-export LIBS="$ESP_ROOT/libraries/ESP8266WiFi/ $ESP_ROOT/libraries/ESP8266WebServer/ ../pubsubclient/src/"
+export LIBS="$ESP_ROOT/libraries/ESP8266WiFi/ $ESP_ROOT/libraries/ESP8266WebServer/ $ESP_ROOT/libraries/ESP8266HTTPClient/ $ESP_ROOT/libraries/ESP8266httpUpdate/ ../pubsubclient/src/"
 
 cp ../../*.ino ../../*.cpp ../../*.h .
 
