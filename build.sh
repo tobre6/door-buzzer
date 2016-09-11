@@ -14,6 +14,8 @@ then
     echo "#define WIFI_SSID \"$wifi_ssid\"" >> default_settings.h
     echo "#define WIFI_PASS \"$wifi_password\"" >> default_settings.h
     echo "#define MQTT_SERVER \"$mqtt_server\"" >> default_settings.h
+else
+    touch default_settings.h
 fi
 
 ARDUINO_IDE_VERSION=1.6.9
