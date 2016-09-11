@@ -1,6 +1,21 @@
 #!/bin/bash
 set -e
 
+if [ ! -e "default_settings.h" ] && [ $(uname) == 'Darwin' ]
+then
+    printf "Wifi SSID: "
+    read wifi_ssid
+    printf "Wifi password: "
+    read wifi_password
+    printf "MQTT server: "
+    read mqtt_server
+
+    echo "#define DEFAULT_SETTINGS" > default_settings.h
+    echo "#define WIFI_SSID \"$wifi_ssid\"" >> default_settings.h
+    echo "#define WIFI_PASS \"$wifi_password\"" >> default_settings.h
+    echo "#define MQTT_SERVER \"$mqtt_server\"" >> default_settings.h
+fi
+
 ARDUINO_IDE_VERSION=1.6.9
 BUILD_DIR="build"
 
@@ -51,7 +66,6 @@ then
 fi
 
 export ESP_ROOT=$(pwd)/esp8266
-#export VERBOSE=1
 export SINGLE_THREAD=1
 
 if [ ! -e "pubsubclient" ]
@@ -64,7 +78,7 @@ cd makeEspArduino
 
 export SKETCH=Door-Buzzer.ino
 export UPLOAD_PORT=/dev/cu.usbserial-A92HD3JZ
-export LIBS="$ESP_ROOT/libraries/ESP8266WiFi/ ../pubsubclient/src/"
+export LIBS="$ESP_ROOT/libraries/ESP8266WiFi/ $ESP_ROOT/libraries/ESP8266WebServer/ ../pubsubclient/src/"
 
 cp ../../*.ino ../../*.cpp ../../*.h .
 
@@ -75,5 +89,3 @@ then
 else
     make -f makeEspArduino.mk all
 fi
-
-ls -alh /tmp/mkESP/Door-Buzzer_generic/

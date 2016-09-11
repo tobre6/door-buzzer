@@ -1,14 +1,13 @@
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 
-#define WIFI_SSID "xxxx"
-#define WIFI_PASS "xxxx"
+#include "default_settings.h"
 #include "Webserver.h"
+#include "Settings.h"
 
-#define MQTT_CLIENT "Door-Buzzer"
-#define MQTT_SERVER "192.168.1.157"
+#define MQTT_CLIENT "Door-Buzzer2"
 #define MQTT_PORT   1883
-#define MQTT_TOPIC  "home/doorbuzzer"
+#define MQTT_TOPIC  "home/doorbuzzer2"
 
 #define RELAY 4
 #define BUZZER_ON_TIME 20 // In seconds
@@ -19,8 +18,9 @@ extern "C" {
 }
 
 WiFiClient wifiClient;
-PubSubClient mqttClient(wifiClient, MQTT_SERVER, MQTT_PORT);
+PubSubClient *mqttClient;
 Webserver *webserver;
+Settings *settings;
 unsigned long timeBuzzerTurnedOn = 0;
 unsigned long lastConnectionCheckTime = 0;
 
@@ -34,16 +34,29 @@ void checkConnection();
 void setup() {
   Serial.begin(115200);
   pinMode(RELAY, OUTPUT);
-  
-  mqttClient.set_callback(mqttCallback);
+
   webserver = new Webserver;
+  settings = new Settings;
+  if (!settings->load()) {
+    Serial.println("Initializing settings");
+    #ifdef DEFAULT_SETTINGS
+      settings->setWifiSSID(WIFI_SSID);
+      settings->setWifiPassword(WIFI_PASS);
+      settings->setMQTTServer(MQTT_SERVER);
+    #endif
+    settings->save();
+  }
+
+  mqttClient = new PubSubClient(wifiClient, settings->getMQTTServer(), MQTT_PORT);
+  mqttClient->set_callback(mqttCallback);
   if (connectToWifi()) {
     connectToMqtt();
   }
 }
 
 void loop() {
-  mqttClient.loop();
+  mqttClient->loop();
+  webserver->loop();
 
   if (timeBuzzerTurnedOn > 0 && millis() > timeBuzzerTurnedOn + 1000 * BUZZER_ON_TIME) {
     turnOffBuzzer();
@@ -57,7 +70,7 @@ void loop() {
 bool connectToWifi() {
   Serial.println("Connecting to Wifi");
   int retries = 10;
-  WiFi.begin(WIFI_SSID, WIFI_PASS);
+  WiFi.begin(settings->getWifiSSID().c_str(), settings->getWifiPassword().c_str());
   while ((WiFi.status() != WL_CONNECTED) && retries--) {
     delay(500);
     Serial.print(" .");
@@ -77,14 +90,14 @@ void connectToMqtt() {
   Serial.println("Connecting to MQTT");
   int retries = 10;
 
-  while (!mqttClient.connect(MQTT::Connect(MQTT_CLIENT).set_keepalive(90)) && retries--) {
+  while (!mqttClient->connect(MQTT::Connect(MQTT_CLIENT).set_keepalive(90)) && retries--) {
     Serial.print(" .");
     delay(1000);
   }
 
-  if(mqttClient.connected()) {
+  if(mqttClient->connected()) {
     Serial.println("Connected to MQTT");
-    mqttClient.subscribe(MQTT_TOPIC);
+    mqttClient->subscribe(MQTT_TOPIC);
   }
 }
 
@@ -99,7 +112,7 @@ void mqttCallback(const MQTT::Publish& pub) {
     turnOffBuzzer();
   }
 
-  mqttClient.publish(MQTT::Publish(MQTT_TOPIC"/status", pub.payload_string()).set_retain(0).set_qos(1));
+  mqttClient->publish(MQTT::Publish(MQTT_TOPIC"/status", pub.payload_string()).set_retain(0).set_qos(1));
 }
 
 void turnOffBuzzer() {
@@ -118,7 +131,7 @@ void checkConnection() {
   if (WiFi.status() != WL_CONNECTED)  {
     connectToWifi();
   }
-  if (WiFi.status() == WL_CONNECTED && !mqttClient.connected()) {
+  if (WiFi.status() == WL_CONNECTED && !mqttClient->connected()) {
     connectToMqtt();
   }
 
