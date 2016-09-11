@@ -91,3 +91,9 @@ then
 else
     make -f makeEspArduino.mk all
 fi
+
+if [ ! -e "dist" ]
+then
+    mkdir dist
+fi
+cp /tmp/mkESP/Door-Buzzer_generic/Door-Buzzer.bin dist/

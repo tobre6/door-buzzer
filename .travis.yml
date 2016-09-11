@@ -1,5 +1,14 @@
 language: c
 compiler:
-  - gcc
+- gcc
 script:
-  - ./build.sh
+- ./build.sh
+deploy:
+  provider: s3
+  access_key_id: AKIAJHM3ZBFQJFHL4REQ
+  secret_access_key:
+    secure: 07zcNuWUO3ki7lrSaYK8Ea32UpbMpoidVrauzG9guip+//H5xSvaw+oAw0xFLxrBDbKIqXsdjodel2mb877B99ZD2eIBK/9qS/F7Ma3m4V5mMkWYXyR5kGA8GpYmK3OtHFtwYzpcLsDOFb4p07oEy9T5Ad6RYShcKiJppfLifspFh1v/QRnxLjAYRH2IAtT0Nuv313DIT7wIatC5+qRrxHhrdbbKnShLemZfSiA5/xmy8mn+NKhEO6d9zQJkZ4M0X8jqbCUeYsBo4odBbve78JJne6VnF6gWgdaBK37+PycB6mcHZaTPvjUZjGSlUUaIHLG3A01EAp82WYO84mHjNgNMIlCwLgOM+PKfaJCYtH+WWfCU2TtJqMtOZOYDzRVuNEX1BsbM0Lg51WerdyTkcll9JoXZV1aVGOj+VgaNXf9a/K2zWA8ajOtEVzrRgbr+1lNGW7eH/F5kf3GSVqEyOYXD2qRRkQfqz4rl4RcYEapj0xoxRVbxUBxUs5XqS6zNpNcvBO1ehsEnmQNGor+E986EzXDijj13uKThd3jRCXnHW/GGhkUuTxJlpSPMyVnSCHk5R/aty2RoZdnVCnblTqUfFmsGV1DbjYnGjs6YMyfgOV8g+1jyjGTe04q5MQZEKtRlkVs2cFZoUqm5FGhlDhacsk2zsbcrDS2gHFgw3bg=
+  bucket: ota.clockwise.ee
+  local_dir: dist
+  on:
+    repo: 2ndalpha/door-buzzer
