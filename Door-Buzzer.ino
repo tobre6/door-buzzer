@@ -3,6 +3,7 @@
 
 #define WIFI_SSID "xxxx"
 #define WIFI_PASS "xxxx"
+#include "Webserver.h"
 
 #define MQTT_CLIENT "Door-Buzzer"
 #define MQTT_SERVER "192.168.1.157"
@@ -19,6 +20,7 @@ extern "C" {
 
 WiFiClient wifiClient;
 PubSubClient mqttClient(wifiClient, MQTT_SERVER, MQTT_PORT);
+Webserver *webserver;
 unsigned long timeBuzzerTurnedOn = 0;
 unsigned long lastConnectionCheckTime = 0;
 
@@ -34,6 +36,7 @@ void setup() {
   pinMode(RELAY, OUTPUT);
   
   mqttClient.set_callback(mqttCallback);
+  webserver = new Webserver;
   if (connectToWifi()) {
     connectToMqtt();
   }

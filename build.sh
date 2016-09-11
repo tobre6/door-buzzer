@@ -66,7 +66,7 @@ export SKETCH=Door-Buzzer.ino
 export UPLOAD_PORT=/dev/cu.usbserial-A92HD3JZ
 export LIBS="$ESP_ROOT/libraries/ESP8266WiFi/ ../pubsubclient/src/"
 
-cp ../../*.ino .
+cp ../../*.ino ../../*.cpp ../../*.h .
 
 if [ $(uname) == 'Darwin' ]
 then
