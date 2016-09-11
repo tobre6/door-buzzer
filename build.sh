@@ -92,6 +92,8 @@ else
     make -f makeEspArduino.mk all
 fi
 
+
+cd ../../
 if [ ! -e "dist" ]
 then
     mkdir dist
