@@ -99,3 +99,5 @@ then
     mkdir dist
 fi
 cp /tmp/mkESP/Door-Buzzer_generic/Door-Buzzer.bin dist/
+ls -alh dist
+pwd
